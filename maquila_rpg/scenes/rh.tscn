@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/sala.gd" id="1_sala"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" path="res://scenes/npc.tscn" id="3_npc"]
+[ext_resource type="PackedScene" path="res://scenes/puerta.tscn" id="4_puerta"]
+
+[node name="Rh" type="Node2D"]
+script = ExtResource("1_sala")
+titulo = "Recursos Humanos"
+tam = Vector2(640, 360)
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+position = Vector2(80, 300)
+
+[node name="Recepcionista" parent="." instance=ExtResource("3_npc")]
+position = Vector2(220, 110)
+nombre_npc = "Recepcionista"
+color = Color(0.4, 0.75, 0.85, 1)
+lineas = "Buenos dias. Viene por la vacante de operador?\nLlene esta solicitud, por favor. Letra de molde.\nListo. Pase con el reclutador, es la puerta del fondo."
+requiere_mision = "solicitud"
+completa_mision = "solicitud"
+lineas_alternas = "Ya esta usted en sistema. Pase con el reclutador."
+
+[node name="Reclutador" parent="." instance=ExtResource("3_npc")]
+position = Vector2(470, 110)
+nombre_npc = "Reclutador"
+color = Color(0.85, 0.45, 0.45, 1)
+lineas = "Sientese. Tiene experiencia en linea de ensamble?\nAqui el rate de la linea 3 es de 60 piezas por hora.\nEl turno es de 8 horas, con 30 minutos de comida.\nMe late su actitud. Queda contratado, empieza hoy mismo.\nPase a la planta, busque al supervisor de la linea 3."
+requiere_mision = "entrevista"
+completa_mision = "entrevista"
+contrata = true
+lineas_alternas = "Ya quedo contratado. Vaya a la linea 3."
+
+[node name="PuertaPlanta" parent="." instance=ExtResource("4_puerta")]
+position = Vector2(600, 300)
+destino = "res://scenes/planta.tscn"
+etiqueta = "Entrada a planta"
+requiere_contratado = true
+mensaje_bloqueado = "Sin gafete no puedes entrar a la planta."
+
+[node name="PuertaCasa" parent="." instance=ExtResource("4_puerta")]
+position = Vector2(40, 180)
+destino = "res://scenes/casa.tscn"
+etiqueta = "Camion a casa"
+color = Color(0.5, 0.5, 0.55, 1)

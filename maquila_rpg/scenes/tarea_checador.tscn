@@ -1,0 +1,84 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/tarea_checador.gd" id="1_chk"]
+
+[node name="TareaChecador" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("1_chk")
+
+[node name="Fondo" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+color = Color(0.11, 0.13, 0.16, 0.92)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 60.0
+offset_right = 490.0
+offset_bottom = 300.0
+
+[node name="LblTitulo" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 10.0
+offset_right = 340.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 14
+text = "CHECADOR DE TURNO"
+horizontal_alignment = 1
+
+[node name="LblTecla" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 60.0
+offset_right = 340.0
+offset_bottom = 120.0
+theme_override_font_sizes/font_size = 40
+text = "W"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Barra" type="ProgressBar" parent="Panel"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 140.0
+offset_right = 270.0
+offset_bottom = 154.0
+value = 100.0
+show_percentage = false
+
+[node name="LblMarcador" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 162.0
+offset_right = 340.0
+offset_bottom = 180.0
+theme_override_font_sizes/font_size = 11
+text = "Aciertos: 0 / 0"
+horizontal_alignment = 1
+
+[node name="LblFinal" type="Label" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 20.0
+offset_top = 60.0
+offset_right = 320.0
+offset_bottom = 150.0
+theme_override_font_sizes/font_size = 13
+text = ""
+horizontal_alignment = 1
+
+[node name="BtnCerrar" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 195.0
+offset_right = 230.0
+offset_bottom = 225.0
+text = "Continuar"

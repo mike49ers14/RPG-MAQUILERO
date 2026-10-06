@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/sala.gd" id="1_sala"]
+[ext_resource type="Texture2D" path="res://assets/sprites/piso_casa.png" id="0_piso"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" path="res://scenes/npc.tscn" id="3_npc"]
+[ext_resource type="PackedScene" path="res://scenes/puerta.tscn" id="4_puerta"]
+
+[node name="Casa" type="Node2D"]
+script = ExtResource("1_sala")
+titulo = "Tu cuarto - Cd. Juarez"
+tam = Vector2(640, 360)
+textura_piso = ExtResource("0_piso")
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+position = Vector2(110, 250)
+
+[node name="Cama" parent="." instance=ExtResource("3_npc")]
+position = Vector2(90, 90)
+nombre_npc = "Cama"
+color = Color(0.55, 0.38, 0.72, 1)
+lineas = "Duermes unas horas.\nSe te quita la fatiga y empieza un nuevo dia."
+descansa = true
+
+[node name="Mama" parent="." instance=ExtResource("3_npc")]
+position = Vector2(300, 140)
+nombre_npc = "Mama"
+color = Color(0.88, 0.63, 0.35, 1)
+lineas = "Ya levantate, mijo.\nDicen que en la maquila de la Zaragoza estan contratando.\nLlevate el acta y el comprobante de domicilio.\nY no se te olvide: el camion pasa a las 5:40."
+
+[node name="ParadaCamion" parent="." instance=ExtResource("4_puerta")]
+position = Vector2(600, 200)
+destino = "res://scenes/planta.tscn"
+etiqueta = "Camion a la maquila"

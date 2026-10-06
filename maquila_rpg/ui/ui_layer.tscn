@@ -1,0 +1,115 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://ui/ui_layer.gd" id="1_ui"]
+
+[node name="Ui" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_ui")
+
+[node name="Hud" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="LblStats" type="Label" parent="Hud"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 260.0
+offset_bottom = 24.0
+theme_override_font_sizes/font_size = 13
+text = "Dia 1   $120   Desempleado"
+
+[node name="BarraFatiga" type="ProgressBar" parent="Hud"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 26.0
+offset_right = 140.0
+offset_bottom = 40.0
+value = 0.0
+show_percentage = false
+
+[node name="LblFatigaTxt" type="Label" parent="Hud"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 25.0
+offset_right = 220.0
+offset_bottom = 41.0
+theme_override_font_sizes/font_size = 11
+text = "fatiga"
+
+[node name="LblMision" type="Label" parent="Hud"]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 4.0
+offset_right = 632.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 11
+text = "TAREAS  0/4"
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="LblTitulo" type="Label" parent="Hud"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 150.0
+offset_right = 640.0
+offset_bottom = 180.0
+theme_override_font_sizes/font_size = 22
+text = ""
+horizontal_alignment = 1
+
+[node name="LblAviso" type="Label" parent="Hud"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 300.0
+offset_right = 640.0
+offset_bottom = 320.0
+theme_override_font_sizes/font_size = 13
+text = ""
+horizontal_alignment = 1
+
+[node name="Dialogo" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Caja" type="Panel" parent="Dialogo"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 250.0
+offset_right = 600.0
+offset_bottom = 345.0
+
+[node name="LblNombre" type="Label" parent="Dialogo/Caja"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 6.0
+offset_right = 300.0
+offset_bottom = 26.0
+theme_override_font_sizes/font_size = 14
+text = "NPC"
+
+[node name="LblTexto" type="Label" parent="Dialogo/Caja"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 30.0
+offset_right = 548.0
+offset_bottom = 70.0
+theme_override_font_sizes/font_size = 13
+text = "..."
+autowrap_mode = 3
+
+[node name="LblHint" type="Label" parent="Dialogo/Caja"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 72.0
+offset_right = 548.0
+offset_bottom = 90.0
+theme_override_font_sizes/font_size = 10
+text = "[E] continuar"
+horizontal_alignment = 2

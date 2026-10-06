@@ -1,0 +1,85 @@
+[gd_scene load_steps=15 format=3]
+
+[ext_resource type="Script" path="res://scripts/sala.gd" id="1_sala"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2_player"]
+[ext_resource type="Script" path="res://scripts/estacion.gd" id="3_estacion"]
+[ext_resource type="PackedScene" path="res://scenes/minijuego.tscn" id="4_ensamble"]
+[ext_resource type="PackedScene" path="res://scenes/tarea_calidad.tscn" id="5_calidad"]
+[ext_resource type="PackedScene" path="res://scenes/tarea_checador.tscn" id="6_checador"]
+[ext_resource type="Script" path="res://scripts/almacen_caja.gd" id="7_caja"]
+[ext_resource type="Script" path="res://scripts/almacen_zona.gd" id="8_zona"]
+[ext_resource type="Script" path="res://scripts/salida_turno.gd" id="9_salida"]
+
+[sub_resource type="CircleShape2D" id="Circ_est_1"]
+radius = 20.0
+
+[sub_resource type="RectangleShape2D" id="Rect_caja"]
+size = Vector2(28, 28)
+
+[sub_resource type="RectangleShape2D" id="Rect_zona"]
+size = Vector2(52, 52)
+
+[sub_resource type="RectangleShape2D" id="Rect_salida"]
+size = Vector2(44, 34)
+
+[node name="Planta" type="Node2D"]
+script = ExtResource("1_sala")
+titulo = "Planta - area general"
+tam = Vector2(900, 600)
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+position = Vector2(450, 520)
+
+[node name="EstacionEnsamble" type="Area2D" parent="."]
+position = Vector2(150, 150)
+script = ExtResource("3_estacion")
+id_tarea = "ensamble"
+nombre_estacion = "Linea de ensamble"
+color = Color(0.36, 0.63, 0.92, 1)
+escena_tarea = ExtResource("4_ensamble")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EstacionEnsamble"]
+shape = SubResource("Circ_est_1")
+
+[node name="EstacionCalidad" type="Area2D" parent="."]
+position = Vector2(450, 150)
+script = ExtResource("3_estacion")
+id_tarea = "calidad"
+nombre_estacion = "Control de calidad"
+color = Color(0.85, 0.45, 0.45, 1)
+escena_tarea = ExtResource("5_calidad")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EstacionCalidad"]
+shape = SubResource("Circ_est_1")
+
+[node name="EstacionChecador" type="Area2D" parent="."]
+position = Vector2(750, 150)
+script = ExtResource("3_estacion")
+id_tarea = "checador"
+nombre_estacion = "Checador"
+color = Color(0.95, 0.75, 0.25, 1)
+escena_tarea = ExtResource("6_checador")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EstacionChecador"]
+shape = SubResource("Circ_est_1")
+
+[node name="Caja" type="Area2D" parent="."]
+position = Vector2(150, 450)
+script = ExtResource("7_caja")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja"]
+shape = SubResource("Rect_caja")
+
+[node name="ZonaEntrega" type="Area2D" parent="."]
+position = Vector2(450, 450)
+script = ExtResource("8_zona")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaEntrega"]
+shape = SubResource("Rect_zona")
+
+[node name="SalidaTurno" type="Area2D" parent="."]
+position = Vector2(750, 450)
+script = ExtResource("9_salida")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SalidaTurno"]
+shape = SubResource("Rect_salida")
